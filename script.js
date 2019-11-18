@@ -27,5 +27,38 @@ function startGame() {
 };
 
 function turnClick(square){
-  console.log(square.target.id)
+  turn(square.target.id, huPlayer)
+};
+
+function turn(squareId,player){
+    oriBoard[squareId] = player;
+    document.getElementById(squareId).innerText = player;
+    let gameWon = checkWin(oriBoard, player);
+    if(gameWon) gameOver(gameWon)
+};
+
+function checkWin(board,player){
+    let plays = board.reduce((a, e, i) =>
+        (e===player) ? a.concat(i) : a, []);
+        
+        let gameWon = null;
+
+        for(let [index, win] of winCombos.entries()){
+            if(win.every(elem =>plays.indexOf(elem) >-1)){
+                gameWon = {index,player};
+                break;
+            }
+        }
+        return gameWon;
+    };
+
+function gameOver(gameWon){
+    for(let index of winCombos[gameWon.index]){
+        document.getElementById(index).style.backgroundColor =
+        gameWon.player == huPlayer ? "blue" : "red";
+    }
+
+    for(let i = 0; i < cells.length; i++){
+        cells[i].removeEventListener('click', turnClick,false)
+    }
 }
