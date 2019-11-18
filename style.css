@@ -1,0 +1,56 @@
+*{
+    box-sizing: border-box;
+  }
+  
+  .board{
+    position: absolute;
+    left: 50%;
+    margin-left:-155px;
+    margin-top: 10%;
+  }
+  .row{
+    display:flex;
+  }
+  
+  .cell {
+    border: 2px solid #333;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: "Comic Sans MS", Cursive;
+    font-size:70px;
+    cursor: pointer;
+  }
+  /*styling the board*/
+  .board .row:first-child .cell{
+    border-top:0;
+  }
+  .board .row:last-child .cell{
+    border-bottom:0;
+  }
+  
+  .board .row .cell:first-child{
+    border-left:0;
+  }
+  .board .row .cell:last-child{
+    border-right:0;
+  }
+  
+  /*endgame screen*/
+  
+  .endgame{
+    display:none;
+    width: 200px;
+    top: 25%;
+    background-color: rgba(205,133,255,0.8);
+    position:absolute;
+    left:50%;
+    margin-left:-100px;
+    padding-top:50px;
+    padding-bottom: 50px;
+    text-align:center;
+    border-radius: 5px;
+    color:white;
+    font-size: 2rem;
+  }
